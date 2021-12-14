@@ -3,7 +3,7 @@
 import sys
 import string
 
-PREPOSITIONS = ['of', 'the', 'and', 'for', 'a']
+PREPOSITIONS = ['of', 'the', 'and', 'for', 'a', 'in', 'on']
 
 # grep -v "n.a." ltwa_20210702.csv | sed -n 's/"\(.*\)";"\(.*\)";".*eng.*"/\1;\2/p' | iconv -f UTF-8 -t ASCII//TRANSLIT > ltwa_eng.csv
 
