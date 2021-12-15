@@ -5,3 +5,13 @@
 .homepage-content {
     text-align: center
 }
+
+#title_input {
+    width: 300px
+}
+
+h1 a {
+    color: var(--font-color);
+    border: none;
+    text-decoration: none;
+}

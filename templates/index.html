@@ -1,51 +1,75 @@
 <!doctype html>
 <html lang=en-gb data-theme>
-    <head>
-        <meta name=generator content="Hugo 0.80.0">
-        <meta charset=utf-8>
-        <meta name=HandheldFriendly content="True">
-        <meta name=viewport content="width=device-width,initial-scale=1">
-        <meta name=referrer content="no-referrer-when-downgrade">
-        <title>Journal Abbreviator</title>
-        <meta name=description content>
-        <link rel=alternate type=application/rss+xml href=/index.xml title="James Brind">
-        <link rel=icon type=image/x-icon href=/favicon.ico>
-        <link rel=apple-touch-icon-precomposed href=/favicon.png>
-        <link rel=stylesheet href=/static/style.1943b07c2f62998b5c39c3ed93e654de915471d67db1989d79bc55bffc1e1956.css integrity="sha256-GUOwfC9imYtcOcPtk+ZU3pFUcdZ9sZidebxVv/weGVY=">
-        <link rel=stylesheet href=/static/extra.css>
-        <meta property="og:title" content="Index">
-        <meta property="og:description" content>
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="/">
-        <meta property="og:updated_time" content="2021-11-07T00:00:00+00:00">
-        <meta name=twitter:card content="summary">
-        <meta name=twitter:title content="Index">
-        <meta name=twitter:description content>
-    </head>
-    <body>
-        <a class=skip-main href=#main> Skip to main content</a>
-        <div class=container>
-            <!-- <header class=common-header> -->
-            <!--     <h1 class=site-title> -->
-            <!--         <a href=/>Journal abbreviator</a> -->
-            <!--     </h1> -->
-            <!-- </header> -->
-            <main id=main tabindex=-1>
-                <div class=homepage-content style="">
-                    <p/>
-                    <h1>Journal Abbreviator</h1>
+  <head>
+    <meta name=generator content="Hugo 0.80.0">
+    <meta charset=utf-8>
+    <meta name=HandheldFriendly content="True">
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name=referrer content="no-referrer-when-downgrade">
+    <title>Journal Abbreviator</title>
+    <meta name=description content>
+    <link rel=alternate type=application/rss+xml href=/index.xml title="James Brind">
+    <link rel=icon type=image/x-icon href=/favicon.ico>
+    <link rel=apple-touch-icon-precomposed href=/favicon.png>
+    <link rel=stylesheet href=/static/style.1943b07c2f62998b5c39c3ed93e654de915471d67db1989d79bc55bffc1e1956.css integrity="sha256-GUOwfC9imYtcOcPtk+ZU3pFUcdZ9sZidebxVv/weGVY=">
+    <link rel=stylesheet href=/static/extra.css>
+    <meta property="og:title" content="Index">
+    <meta property="og:description" content>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/">
+    <meta property="og:updated_time" content="2021-11-07T00:00:00+00:00">
+    <meta name=twitter:card content="summary">
+    <meta name=twitter:title content="Index">
+    <meta name=twitter:description content>
+  </head>
+  <body onload="focusInput()">
 
-    <form action="" method="post">
-        <input type="text" autocomplete="off" name="long_title" value="{{ long_title }}"></input>
-        <button type="submit">Submit</button>
-    </form>
+    <a class=skip-main href=#main> Skip to main content</a>
+    <div class=container>
+      <!-- <header class=common-header> -->
+      <!--     <h1 class=site-title> -->
+      <!--         <a href=/>Journal abbreviator</a> -->
+      <!--     </h1> -->
+      <!-- </header> -->
+      <main id=main tabindex=-1>
+        <div class=homepage-content style="">
+          <p/>
+          <a href="/"><h1>Journal Abbreviator</h1></a>
+            <input placeholder="Enter a journal title..." type="text" autocomplete="off" id="title_input" value="{{ long_title }}"></input>
+            <button onClick="abbreviate()">Abbreviate</button>
+          <p/>
+          <div id="short_title" >{{ short_title }}</div>
+          {% if short_title %}
+          <a href="javascript:toClip()">Copy to clipboard</a>
+          {% endif %}
 
-    <p/>
-    <div id="short_title" >{{ short_title }}</div>
-
-                </div>
-            </main>
-            <footer class=common-footer>
-                <div class=common-footer-bottom>
-                    <div class=copyright>
-                        <p>© James Brind, 2021<br>Built with <a target=_blank rel="noopener noreferrer" href=https://gohugo.io/>Hugo</a>, theme <a target=_blank rel="noopener noreferrer" href=https://github.com/mitrichius/hugo-theme-anubis>Anubis</a>; hosted on the <a href=http://www.srcf.net>Student-Run Computing Facility</a>.</p></div></div></footer></div></body></html>
+        </div>
+      </main>
+    <script type="text/javascript">
+      function abbreviate(){
+          let title = document.getElementById('title_input').value
+          let url = "/".concat(encodeURIComponent(title))
+            console.log(url)
+          window.location.replace(url);
+      }
+      function toClip(txt) {
+          let copyText = document.getElementById("short_title").textContent;
+          console.log(copyText)
+          navigator.clipboard.writeText(copyText);
+      }
+      function focusInput() {
+        let input = document.getElementById('title_input')
+        input.focus()
+        let posn = input.value.length
+        input.setSelectionRange(posn,posn);
+      }
+      document.getElementById('title_input').onkeydown = function(e){
+          if(e.keyCode == 13){
+            abbreviate()
+          }
+      };
+    </script>
+      <footer class=common-footer>
+        <div class=common-footer-bottom>
+          <div class=copyright>
+            <p>© James Brind, 2021<br>Built with <a target=_blank rel="noopener noreferrer" href=https://gohugo.io/>Hugo</a>, theme <a target=_blank rel="noopener noreferrer" href=https://github.com/mitrichius/hugo-theme-anubis>Anubis</a>; hosted on the <a href=http://www.srcf.net>Student-Run Computing Facility</a>.</p></div></div></footer></div></body></html>
