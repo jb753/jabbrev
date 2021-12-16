@@ -38,10 +38,14 @@
             <input placeholder="Enter a journal title..." type="text" autocomplete="off" id="title_input" value="{{ long_title }}"></input>
             <button onClick="abbreviate()">Abbreviate</button>
           <p/>
-          <div id="short_title" >{{ short_title }}</div>
+          <div id="wrapper">
           {% if short_title %}
-          <a href="#", onClick="toClip(); this.blur(); return false;">Copy to clipboard</a>
+            <div id="short_title" >{{ short_title }}</div>
+            <a href="#", onClick="toClip(); this.blur(); return false;">Copy to clipboard</a>
+          {% else %}
+            <div class="greyed" id="short_title" >... and abbreviate it according to ISO4.</div>
           {% endif %}
+          </div>
 
         </div>
       </main>

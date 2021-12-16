@@ -1,5 +1,5 @@
 #short_title {
-    height: 20px
+    font-size: 1.35em;
 }
 
 .homepage-content {
@@ -7,11 +7,27 @@
 }
 
 #title_input {
-    width: 300px
+    width: 500px
 }
 
 h1 a {
     color: var(--font-color);
     border: none;
     text-decoration: none;
+}
+
+input, button {
+    font-family: inherit;
+    font-size: inherit;
+    height: 36px;
+    margin: 20px 0px;
+    margin-top: 35px;
+}
+
+.greyed {
+    color: grey;
+}
+
+#wrapper {
+    height:50px;
 }

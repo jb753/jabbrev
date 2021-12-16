@@ -130,7 +130,7 @@ def abbreviate(title_str, word_list):
 
     # Do not abbreviate single-word titles
     if len(title_long) == 1:
-        title_short = title_long[0]
+        title_short = title_long[0].capitalize()
     else:
         # Now, process each word individually
         title_short_words = [word_list.process_word(w.strip(',')) for w in title_long]
