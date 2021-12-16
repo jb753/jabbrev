@@ -20,6 +20,7 @@ def log(query):
 
 @app.route('/<journal>')
 def abbreviate(journal):
+    journal = journal.replace("+"," ")
     log(journal)
     short_title = jabbrev.abbreviate(journal,word_list)
     return render_template(

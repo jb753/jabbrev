@@ -24,17 +24,11 @@
   </head>
   <body onload="focusInput()">
 
-    <a class=skip-main href=#main> Skip to main content</a>
     <div class=container>
-      <!-- <header class=common-header> -->
-      <!--     <h1 class=site-title> -->
-      <!--         <a href=/>Journal abbreviator</a> -->
-      <!--     </h1> -->
-      <!-- </header> -->
       <main id=main tabindex=-1>
         <div class=homepage-content style="">
           <p/>
-          <a href="/"><h1>Journal Abbreviator</h1></a>
+          <a href="/journal-abbreviator/"><h1>Journal Abbreviator</h1></a>
             <input placeholder="Enter a journal title..." type="text" autocomplete="off" id="title_input" value="{{ long_title }}"></input>
             <button onClick="abbreviate()">Abbreviate</button>
           <p/>
@@ -51,9 +45,10 @@
       </main>
     <script type="text/javascript">
       function abbreviate(){
+          console.log("beans")
           let title = document.getElementById('title_input').value
-          let url = "/".concat(encodeURIComponent(title))
-            console.log(url)
+          let url = "/journal-abbreviator/".concat(encodeURIComponent(title))
+          console.log(url)
           window.location.replace(url);
       }
       function toClip(txt) {
