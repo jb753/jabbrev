@@ -106,7 +106,7 @@ class WordList():
             return suffix.title()
 
         # Otherwise, return unchanged
-        return word
+        return word.capitalize()
 
     def join_multiwords(self, words):
         """Take a list of words and join any that are valid abbreviations."""

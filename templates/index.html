@@ -40,7 +40,7 @@
           <p/>
           <div id="short_title" >{{ short_title }}</div>
           {% if short_title %}
-          <a href="javascript:toClip()">Copy to clipboard</a>
+          <a href="#", onClick="toClip(); this.blur(); return false;">Copy to clipboard</a>
           {% endif %}
 
         </div>
