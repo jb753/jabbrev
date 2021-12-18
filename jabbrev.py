@@ -3,7 +3,7 @@
 import sys
 import string
 
-PREPOSITIONS = ['of', 'the', 'and', 'for', 'a', 'in', 'on']
+PREPOSITIONS = ['of', 'the', 'and', 'for', 'a', 'in', 'on', 'part']
 
 # grep -v "n.a." ltwa_20210702.csv | sed -n 's/"\(.*\)";"\(.*\)";".*eng.*"/\1;\2/p' | iconv -f UTF-8 -t ASCII//TRANSLIT > ltwa_eng.csv
 
@@ -110,16 +110,15 @@ class WordList():
 
     def join_multiwords(self, words):
         """Take a list of words and join any that are valid abbreviations."""
-        # Attempt to join abbreviations up to four words long
-        for num_words in range(4,1,-1):
-            if len(words) >= num_words:
-                for start in range(0,len(words)-(num_words-1)):
-                    trial_multi = " ".join(words[start:(start+num_words)]).casefold()
-                    if (trial_multi in self.abbreviations
-                            or trial_multi in self.non_abbreviations):
-                        words[start] = trial_multi
-                        words[start+1:(start+num_words)] = ""
-                        break
+        # Attempt to join from two to min(four,len(words)) words
+        for num_words in range(min(4,len(words)),1,-1):
+            for start in range(0,len(words)-(num_words-1)):
+                trial_multi = " ".join(words[start:(start+num_words)]).casefold()
+                if (trial_multi in self.abbreviations
+                        or trial_multi in self.non_abbreviations):
+                    words[start] = trial_multi
+                    words[start+1:(start+num_words)] = ""
+                    break
 
 def abbreviate(title_str, word_list):
     """Take a long title string and abbreviate it."""

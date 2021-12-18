@@ -18,7 +18,6 @@
     <meta property="og:updated_time" content="2021-11-07T00:00:00+00:00">
   </head>
   <body onload="focusInput()">
-
     <div class=container>
       <main id=main tabindex=-1>
         <div class=homepage-content style="">
@@ -27,6 +26,7 @@
             <input placeholder="Enter a journal title..." type="text" autocomplete="off" id="title_input" value="{{ long_title }}"></input>
             <button onClick="abbreviate()">Abbreviate</button>
           <p/>
+          <noscript>This page requires JavaScript.</noscript>
           <div id="wrapper">
           {% if short_title %}
             <div id="short_title" >{{ short_title }}</div>
