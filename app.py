@@ -31,7 +31,6 @@ def abbreviate(journal):
 
 @app.route('/')
 def index():
-
     return render_template(
             'index.html',
             short_title="",

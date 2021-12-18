@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Testing a basic implementation of Journal abbreviations."""
 
 import sys
@@ -112,11 +113,16 @@ class WordList():
         """Take a list of words and join any that are valid abbreviations."""
         # Attempt to join from two to min(four,len(words)) words
         for num_words in range(min(4,len(words)),1,-1):
+            # Slide window over the title
             for start in range(0,len(words)-(num_words-1)):
+                # Join words in window to a trial multi-word abbrev
                 trial_multi = " ".join(words[start:(start+num_words)]).casefold()
+                # If trial word is found in the dictionaries
                 if (trial_multi in self.abbreviations
                         or trial_multi in self.non_abbreviations):
+                    # Reassign the multi-word to start of window
                     words[start] = trial_multi
+                    # Delete words from rest of window
                     words[start+1:(start+num_words)] = ""
                     break
 
